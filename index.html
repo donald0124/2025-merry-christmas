@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聖誕交換禮物派對 2025</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="snow-container"></div>
+
+    <div class="container">
+        <header>
+            <h1>聖誕交換禮物 <span>Christmas Party</span></h1>
+            <p class="subtitle">距離截止日期的倒數計時</p>
+        </header>
+
+        <div id="welcome-back-area" style="display: none; text-align: center; margin-bottom: 20px;">
+            <a id="my-mission-link" href="#" style="
+                background-color: var(--accent-green);
+                color: white;
+                padding: 10px 20px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-size: 0.9rem;
+                box-shadow: 0 4px 10px rgba(95, 113, 97, 0.3);
+                display: inline-block;
+            ">
+                👋 嗨！點此查看你的送禮對象
+            </a>
+        </div>
+
+        <section id="santa-tracker">
+            <div class="tracker-container">
+                <div class="santa-icon" id="santa">🎅🛷</div> 
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+                <div class="dates">
+                    <span>Start</span>
+                    <span id="days-left">計算中...</span>
+                    <span>12/22</span>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="rules">
+            <h2>📜 遊戲規則</h2>
+            
+            <div class="rule-card">
+                <h3>配色主題</h3>
+                <p>請參考以下七種顏色：</p>
+                <div class="color-palette">
+                    <span class="color-dot" style="background-color: #fe3d2d;" title="紅"></span>
+                    <span class="color-dot" style="background-color: #fad23d;" title="黃"></span>
+                    <span class="color-dot" style="background-color: #25582b" title="綠"></span>
+                    <span class="color-dot" style="background-color: #0367f7;" title="藍"></span>
+                    <span class="color-dot" style="background-color: #ad3af2;" title="紫"></span>
+                    <span class="color-dot" style="background-color: #FFFFFF; border:1px solid #ddd;" title="純白"></span>
+                    <span class="color-dot" style="background-color: #744321;" title="棕"></span>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <h3>禮物規範</h3>
+                <ul>
+                    <li>💰 總金額：<strong>500元</strong></li>
+                    <li>🎁 內容物：至少包含 <strong>3樣小物</strong></li>
+                    <li>🎨 顏色佔比：<strong>70% 以上</strong> (不能只有LOGO是紅色的！)</li>
+                </ul>
+            </div>
+
+            <div class="rule-card">
+                <h3>重要日期</h3>
+                <ul>
+                    <li>🚚 郵寄截止：<strong>12/22 (日)</strong></li>
+                    <li>🎄 開箱日期：<strong>12/24 (二)</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>Designed by sphsieh for Christmas 2025</p>
+            
+        </footer>
+
+
+    </div>
+
+    
+  
+
+    <script src="script.js"></script>
+</body>
+
+</html>
