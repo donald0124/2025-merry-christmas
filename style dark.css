@@ -1,0 +1,305 @@
+/* style.css - 聖誕夜空版 */
+
+/* 定義全站配色變數 (夜空主題) */
+:root {
+    /* 背景漸層起始色 (深藍夜空) */
+    --bg-gradient-start: #0a1333; 
+    /* 背景漸層結束色 (較亮的藍色地平線) */
+    --bg-gradient-end: #1f366a;
+    
+    /* 主要文字色改為白色，在深色背景才清楚 */
+    --text-color: #ffffff;
+    /* 次要文字色 (例如小標題) 改為淺藍灰色 */
+    --sub-text-color: #a0b4d6;
+    
+    /* 重點色 - 紅色 (維持聖誕感，但稍微亮一點) */
+    --accent-red: #ff4757;
+    /* 重點色 - 輔助色 (原本的綠色改成亮青色或白色，配合冰雪感) */
+    --accent-cyan: #4deeea;
+    
+    /* 卡片背景改為半透明的深藍色，讓背景透出來 */
+    --card-bg: rgba(20, 40, 80, 0.7); 
+    /* 卡片邊框色 */
+    --card-border: rgba(255, 255, 255, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* 使用線性漸層背景 */
+    background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+    background-attachment: fixed; /* 讓背景固定，捲動時更有層次感 */
+    color: var(--text-color);
+    font-family: 'Noto Serif TC', serif;
+    line-height: 1.6;
+    padding: 15px; 
+    overflow-x: hidden;
+    min-height: 100vh; /* 確保漸層填滿整個螢幕高度 */
+}
+
+/* --- Mobile First 佈局 --- */
+
+.container {
+    width: 100%;       
+    max-width: 400px;  
+    margin: 0 auto;    
+    position: relative;
+    z-index: 2;
+}
+
+/* 標題樣式 */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: var(--text-color); /* 標題改白色 */
+    letter-spacing: 1px;
+    line-height: 1.2;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3); /* 加一點發光效果 */
+}
+
+header h1 span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--accent-cyan); /* 副標題改亮青色 */
+    font-weight: normal;
+    margin-top: 5px;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: var(--sub-text-color); /* 使用淺藍灰色 */
+    margin-top: 8px;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    /* 分隔線改用半透明白色 */
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    margin: 30px 0;
+}
+
+/* 規則卡片 (深色半透明風格) */
+.rule-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 15px;
+    border-radius: 15px; /* 圓角大一點 */
+    margin-bottom: 15px;
+    /* 改用白色光暈 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    /* 移除原本左邊的粗邊框，改用整體發光感 */
+    /* border-left: 4px solid var(--accent-green); */
+    backdrop-filter: blur(5px); /* 毛玻璃效果 (支援的瀏覽器才有) */
+}
+
+.rule-card h3 {
+    color: var(--accent-cyan); /* 標題改亮青色 */
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 8px;
+}
+
+.rule-card ul {
+    list-style-type: none;
+    padding-left: 5px;
+    font-size: 0.95rem;
+}
+
+.rule-card li {
+    margin-bottom: 10px;
+}
+
+.rule-card strong {
+    color: var(--accent-red); /* 強調文字用紅色 */
+}
+
+/* 顏色圓點 */
+.color-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center; /* 置中對齊 */
+}
+
+.color-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    /* 增加白色邊框讓深色圓點在深色背景跳出來 */
+    border: 2px solid rgba(255, 255, 255, 0.8) !important; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* --- 聖誕老人追蹤器 RWD 優化 --- */
+.tracker-container {
+    padding: 0 5px;
+    position: relative; 
+    margin-top: 70px; /* 增加上方空間給更大的 GIF */
+}
+
+.progress-bar-bg {
+    /* 進度條背景改深色 */
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    height: 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+    position: relative;
+    overflow: hidden; /* 讓光影不溢出 */
+}
+
+/* 進度條填滿部分 */
+#progress-fill {
+    /* 加一個漸層光影 */
+    background: linear-gradient(to right, #b64545, #ff4757);
+    box-shadow: 0 0 10px var(--accent-red);
+}
+
+
+/* --- [修改重點] 聖誕老人 GIF 容器與樣式 --- */
+
+/* 這是一個包裹 GIF 的容器，JS 會移動這個容器 */
+.santa-gif-container {
+    position: absolute;
+    /* 調整垂直位置，讓他看起來走在進度條上 */
+    top: -55px; 
+    /* 初始位置，JS 會覆寫它 */
+    left: 0%;
+    /* 確保中心點對齊進度 */
+    transform: translateX(-50%); 
+    
+    /* 移動動畫設定 */
+    transition: left 2.5s cubic-bezier(0.25, 1, 0.5, 1); 
+    
+    z-index: 10;
+    /* 為了除錯暫時加上邊框，確認位置用，正式上線可移除 */
+    /* border: 1px solid red; */
+    pointer-events: none; /* 防止擋到點擊 */
+}
+
+/* GIF 圖片本體 */
+.santa-gif-container img {
+    /* 設定 GIF 的寬度，根據實際素材調整 */
+    width: 100px; 
+    height: auto;
+    display: block;
+    
+    /* 黑色剪影风格不需要影子，如果需要可打開 */
+    /* filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.2)); */
+    
+    /* 如果找的 GIF 是往左跑的，取消下面這行的註解把它翻轉 */
+    /* transform: scaleX(-1); */
+}
+
+
+.dates {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--sub-text-color); /* 改淺藍灰色 */
+}
+
+/* --- RWD: 針對大螢幕調整 --- */
+@media (min-width: 768px) {
+    .container {
+        max-width: 700px; 
+    }
+    header h1 {
+        font-size: 2.5rem; 
+    }
+    .santa-gif-container img {
+        width: 120px; /* 大螢幕 GIF 可以大一點 */
+        margin-top: -10px;
+    }
+    /* ...其餘 grid 排版維持不變... */
+    #rules {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px;
+    }
+    #rules h2 {
+        grid-column: span 2;
+    }
+}
+
+/* --- 下雪特效 (樣式微調) --- */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1; /* 確保在內容之下 */
+    animation: fall linear forwards;
+    /* 增加發光效果 */
+    box-shadow: 0 0 5px rgba(255,255,255,0.8);
+}
+
+/* 頁尾樣式 */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+footer p {
+    color: var(--sub-text-color);
+}
+
+/* =========================================
+   專屬任務頁面的額外樣式 (覆蓋原本內嵌在 HTML 的樣式)
+   ========================================= */
+/* 為了讓任務頁面也吃到新主題，我們把樣式移到這裡統一管理 */
+
+/* 任務卡片 */
+.mission-card {
+    background: var(--card-bg) !important; /* 強制使用新背景 */
+    border: 1px solid var(--accent-cyan) !important; /* 邊框改亮青色 */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(77, 238, 234, 0.2) !important; /* 青色發光 */
+    margin-top: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.mission-title {
+    color: var(--sub-text-color) !important;
+}
+
+.target-name {
+    color: var(--text-color) !important; /* 名字改白色 */
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.color-box {
+    background: rgba(255, 255, 255, 0.1) !important; /* 半透明白色背景 */
+    color: var(--text-color) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.back-btn {
+    color: var(--accent-cyan) !important;
+    border: 1px solid var(--accent-cyan) !important;
+}
+
+.back-btn:hover {
+    background: var(--accent-cyan) !important;
+    color: #000 !important; /* hover 時文字變深色比較清楚 */
+    box-shadow: 0 0 15px var(--accent-cyan);
+}

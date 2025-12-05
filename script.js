@@ -28,17 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const endDate = new Date(currentYear, 11, 22, 23, 59, 59);
         const now = new Date();
 
+        // 1. 計算天數
         const diffTime = endDate - now;
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
         const daysLeftElement = document.getElementById('days-left');
+        
         if (now >= endDate) {
             daysLeftElement.innerText = "已截止！";
-            daysLeftElement.style.color = "#B64545";
+            daysLeftElement.style.color = "#d35400"; // 改用文青紅
         } else {
             daysLeftElement.innerText = `還剩 ${diffDays} 天`;
         }
 
+        // 2. 計算百分比
         const totalDuration = endDate - startDate;
         const timePassed = now - startDate;
         let percentage = (timePassed / totalDuration) * 100;
@@ -46,20 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (percentage < 0) percentage = 0;
         if (percentage > 100) percentage = 100;
 
-        const santa = document.getElementById('santa');
+
+        // 3. 更新畫面 (GIF 移動)
+        // [注意] 這裡抓取的是我們新命名的 ID
+        const santaContainer = document.getElementById('santa-container');
         const progressFill = document.getElementById('progress-fill');
 
-        santa.innerText = santaEmoji;
         progressFill.style.width = percentage + "%";
-        progressFill.style.backgroundColor = "#B64545";
         progressFill.style.height = "100%";
-        progressFill.style.borderRadius = "5px";
 
-        santa.style.left = "0%";
+        santaContainer.style.left = "0%";
         setTimeout(() => {
             let iconPosition = percentage;
             if(iconPosition > 95) iconPosition = 95;
-            santa.style.left = iconPosition + "%";
+            santaContainer.style.left = iconPosition + "%";
         }, 100);
     }
 

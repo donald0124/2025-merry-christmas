@@ -1,6 +1,6 @@
 /* 定義全站配色變數 */
 :root {
-    --bg-color: #f5efe2; 
+    --bg-color: #ebe7d8ff; 
     --text-color: #4A4A4A;
     --accent-red: #B64545;
     --accent-green: #5F7161;
@@ -114,13 +114,9 @@ header h1 span {
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
-
-/* --- 聖誕老人追蹤器 (GIF版) --- */
+/* --- 聖誕老人追蹤器 RWD 優化 --- */
 .tracker-container {
-    padding: 0 5px;
-    position: relative; 
-    margin-top: 60px; /* 留空間給 GIF */
-
+    padding: 0 5px; /* 預留一點空間給聖誕老人頭尾 */
 }
 
 .progress-bar-bg {
@@ -131,39 +127,35 @@ header h1 span {
     position: relative;
 }
 
-/* 進度條填滿部分 */
-#progress-fill {
-    background-color: var(--accent-red);
-    border-radius: 5px;
-}
 
-
-
-
-
-/* 聖誕老人 GIF 容器 */
-.santa-gif-container {
+/* 聖誕老人圖案與動畫設定 */
+.santa-icon {
+    font-size: 2rem; /* 字體稍微調整，避免麋鹿太長超出螢幕 */
     position: absolute;
-    top: -51px; /* 調整高度，剛好踩在線上 */
-    left: 0%;
-    transform: translateX(-50%); /* 居中對齊 */
+    /* 調整垂直距離：數值越小越往下 */
+    top: -30px; 
+    
+    /* 確保圖案中心點對齊進度 */
+    transform: translateX(-50%) scaleX(-1); 
+    
+    /* 關鍵：設定左邊距的動畫時間為 2.5秒，慢一點比較有fu */
     transition: left 2.5s cubic-bezier(0.25, 1, 0.5, 1); 
+    
+    /* 確保麋鹿和雪橇在同一行，不會折行 */
+    white-space: nowrap;
+    
     z-index: 10;
-    pointer-events: none;
+    
+    /* 加一點濾鏡讓它有點立體感 */
+    filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.2));
 }
 
-/* GIF 圖片樣式 */
-.santa-gif-container img {
-    width: 155px; /* 大小適中 */
-    height: auto;
-    display: block;
-    /* 黑色剪影在淺色背景很清楚，不需要額外濾鏡 */
-    opacity: 0.9; 
+/* 確保父容器有定位基準，不然聖誕老人會亂跑 */
+.tracker-container {
+    position: relative; 
+    padding: 0 5px;
+    margin-top: 50px; /* 上方留多一點空間給麋鹿 */
 }
-
-
-
-
 
 
 .dates {
@@ -228,7 +220,7 @@ header h1 span {
     pointer-events: none; /* 讓雪花不會擋住點擊 */
     z-index: 3; /* 在背景之上，但內容之下 (內容是 z-index: 2) */
     animation: fall linear forwards;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* 定義雪花飄落的動畫 */
