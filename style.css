@@ -271,3 +271,61 @@ footer .credits a {
 footer .credits a:hover {
     color: var(--accent-red);
 }
+
+
+
+
+/* --- 新增：聖誕老人對話氣泡 --- */
+.speech-bubble {
+    position: absolute;
+    top: -45px; /* 在聖誕老人頭上 */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0; /* 預設隱藏 */
+    transition: opacity 0.3s, top 0.3s; /* 淡入淡出效果 */
+    pointer-events: none; /* 讓點擊穿透氣泡，點到下面的聖誕老人 */
+    z-index: 20;
+}
+
+/* 對話框的小三角形 (指向下方) */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px 6px 0;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+/* 當加上 .show 類別時，讓它顯示 */
+.speech-bubble.show {
+    opacity: 1;
+    top: -55px; /* 顯示時稍微往上浮一點，比較生動 */
+}
+
+/* --- 新增：操作提示文字 --- */
+.click-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--accent-red); /* 用紅色比較顯眼 */
+    margin-top: 15px;
+    font-weight: bold;
+    opacity: 0.8;
+    animation: pulse-text 2s infinite; /* 讓文字像呼吸一樣忽大忽小 */
+}
+
+@keyframes pulse-text {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
