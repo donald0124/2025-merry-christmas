@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 隨機換台詞 (增加趣味性，選做)
                 const messages = ["🎅: 趕路中！別催！", "🎅: 禮物要掉了啦！", "🎅: 衝啊！", "🦌: 腿好痠...", "🎅: Ho Ho Ho!"];
                 // 每點 5 次才換一句，或是每次都換，這裡設為隨機
-                if (Math.random() > 0.5) {
+                if (Math.random() > 0.2) {
                    bubble.innerText = messages[Math.floor(Math.random() * messages.length)];
                 } else {
                    bubble.innerText = "🎅: 趕路中！別催！"; // 預設台詞
