@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // 加速邏輯
-            bonusPercentage += 15; //每次加速距離
+            bonusPercentage += 30; //每次加速距離
             if (basePercentage + bonusPercentage > 98) {
                 bonusPercentage = 98 - basePercentage;
             }
